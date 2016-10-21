@@ -1,0 +1,32 @@
+{
+  "name": "image_srch_abstract",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+    "scripts": {
+        "dev": "babel-node src/server.js",
+    "prestart": "babel src --out-dir dist",
+    "start": "node dist/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChadoNihi/img-srch-abstraction.git"
+  },
+  "author": "eFish",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChadoNihi/img-srch-abstraction/issues"
+  },
+  "homepage": "https://github.com/ChadoNihi/img-srch-abstraction#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-core": "^6.17.0",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0"
+  }
+}
