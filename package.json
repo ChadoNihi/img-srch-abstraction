@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/server.js",
-    "scripts": {
-        "dev": "babel-node src/server.js",
+  "scripts": {
+    "dev": "babel-node src/server.js",
     "prestart": "babel src --out-dir dist",
     "start": "node dist/server.js"
   },
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/ChadoNihi/img-srch-abstraction#readme",
   "dependencies": {
+    "dotenv": "^2.0.0",
     "express": "^4.14.0"
   },
   "devDependencies": {
