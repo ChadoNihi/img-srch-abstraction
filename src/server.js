@@ -20,8 +20,8 @@ app.set('view engine', 'pug');
 
 
 app.get('/', showMainPage);
-app.get('/img-srch', returnBySearch);
-app.get('/img-srch/latest', returnLatest);
+app.get('/'+imgSrchPath, returnBySearch);
+app.get('/'+latestPath, returnLatest);
 
 app.listen(app.get('port'), 'localhost', ()=>{
     console.log(`The server is listening to port ${app.get('port')}`);

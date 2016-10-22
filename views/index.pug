@@ -1,0 +1,30 @@
+html
+        head
+                title= title
+                meta(name="viewport" content="width=device-width, initial-scale=1.0")
+                link(href="/stylesheets/main.css" rel="stylesheet")
+                link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
+                link(rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-amber.min.css")
+                script(defer src="https://code.getmdl.io/1.2.1/material.min.js")
+        body
+                .mdl-layout__container
+                        .mdl-layout.mdl-js-layout
+                                main.mdl-layout__content
+                                        .mdl-grid
+                                                .mdl-cell.mdl-cell--12-col
+                                                        h1 JSON Image Search
+                                                .mdl-cell.mdl-cell--12-col
+                                                        h3 Usage:
+                                                        - var q='q=factory%20farming'
+                                                        - var imgSrchUrl = url+imgSrchPath+'?'+q
+                                                        - var imgSrchUrlHtml = url+imgSrchPath+'<b>'+q+'</b>'
+                                                        p To search images by a query string:
+                                                        .example
+                                                                a(href=imgSrchUrl) #{imgSrchUrlHtml}
+
+                                                        p Paginate by adding 'offset=2':
+                                                        .example
+                                                                a(href=imgSrchUrl+'&offset=2') #{imgSrchUrl+'<b>&offset=2</b>'}
+                                                        p To get recently searched images:
+                                                        .example
+                                                                a(href=url+latestPath) #{url+latestPath}
