@@ -30,6 +30,5 @@ app.get('/'+routes.imgSrchPath, routes.returnBySearch);
 app.get('/'+routes.latestPath, routes.returnLatest);
 
 app.listen(app.get('port'), ()=>{
-  console.log(routes.imgSrchPath);
   console.log(`The server is listening to port ${app.get('port')}`);
 });
