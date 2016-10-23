@@ -1,10 +1,10 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import {showMainPage, imgSrchPath, latestPath, returnBySearch, returnLatest} from './routes/main.js';
-import stylus from 'stylus';
-import nib from 'nib';
+const express = require('express'),
+      dotenv = require('dotenv'),
+      routes = require('./routes/main.js'),
+      stylus = require('stylus'),
+      nib = require('nib'),
 
-const app = express(),
+      app = express(),
       port = process.env.PORT || 5000,
       compile = (str, path)=> {
           return stylus(str)
@@ -18,17 +18,18 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
 
 app.use(stylus.middleware(
-    { src: __dirname + '/public'
+    { src: __dirname + '/'
     , compile: compile
     }
 ));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/'));
 
 
-app.get('/', showMainPage);
-app.get('/'+imgSrchPath, returnBySearch);
-app.get('/'+latestPath, returnLatest);
+app.get('/', routes.showMainPage);
+app.get('/'+routes.imgSrchPath, routes.returnBySearch);
+app.get('/'+routes.latestPath, routes.returnLatest);
 
 app.listen(app.get('port'), ()=>{
-    console.log(`The server is listening to port ${app.get('port')}`);
+  console.log(routes.imgSrchPath);
+  console.log(`The server is listening to port ${app.get('port')}`);
 });

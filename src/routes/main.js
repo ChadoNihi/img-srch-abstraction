@@ -1,6 +1,9 @@
-import https from 'https';
+const https = require('https'),
 
-let latestQ = 'factory%20farming',
+      imgSrchPath = 'image-search',
+      latestPath = imgSrchPath+'/latest';
+
+var latestQ = 'factory%20farming',
     ajaxOptions = {
         headers: {
            'Content-Type': 'application/json'
@@ -9,11 +12,12 @@ let latestQ = 'factory%20farming',
         json: true
     };
 
-export const imgSrchPath = 'image-search',
-latestPath = imgSrchPath+'/latest',
 
-showMainPage = (req, res)=> {
-  let url = req.protocol + '://' + req.get('host') + req.originalUrl;
+exports.imgSrchPath = imgSrchPath;
+exports.latestPath = latestPath;
+
+exports.showMainPage = (req, res)=> {
+  var url = req.protocol + '://' + req.get('host') + req.originalUrl;
 
   res.render('index', { url: url,
                         title: 'Instructions | JSON Image Search',
@@ -21,14 +25,14 @@ showMainPage = (req, res)=> {
                         latestPath: latestPath,
                         latestQ: latestQ
                       });
-},
+};
 
-returnBySearch = (req, res)=> {
+exports.returnBySearch = (req, res)=> {
   ajaxOptions.path = `/customsearch/v1?q=nuts&cx=${process.env.CX}&searchType=image&key=${process.env.SEARCH_KEY}`;
   ajaxOptions.path += `&q=${latestQ}`;
 
   https.request(ajaxOptions, (res2)=>{
-    let data = '';
+    var data = '';
     console.log('receiving data');
     res2.setEncoding('utf8');
 
@@ -41,6 +45,6 @@ returnBySearch = (req, res)=> {
   });
 },
 
-returnLatest = (req, res)=> {
+exports.returnLatest = (req, res)=> {
 
 };
