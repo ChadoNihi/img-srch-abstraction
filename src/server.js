@@ -1,12 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import {showMainPage} from './routes';
+import {showMainPage, imgSrchPath, latestPath, returnBySearch, returnLatest} from './routes/main.js';
 import stylus from 'stylus';
 import nib from 'nib';
 
 const app = express(),
       port = process.env.PORT || 5000,
-      srchEngApi = 'https://www.googleapis.com/customsearch/v1?q=nuts&cx=013008978640622301934%3Ayuqjeg-j9km&searchType=image&key='+process.env.SEARCH_KEY,
       compile = (str, path)=> {
           return stylus(str)
               .set('filename', path)
@@ -18,11 +17,18 @@ app.set( 'port', ( process.env.PORT || 5000 ));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
 
+app.use(stylus.middleware(
+    { src: __dirname + '/public'
+    , compile: compile
+    }
+));
+app.use(express.static(__dirname + '/public'));
+
 
 app.get('/', showMainPage);
 app.get('/'+imgSrchPath, returnBySearch);
 app.get('/'+latestPath, returnLatest);
 
-app.listen(app.get('port'), 'localhost', ()=>{
+app.listen(app.get('port'), ()=>{
     console.log(`The server is listening to port ${app.get('port')}`);
 });
