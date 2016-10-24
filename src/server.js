@@ -27,7 +27,7 @@ app.use(express.static(__dirname + '/'));
 
 app.get('/', routes.showMainPage);
 app.get('/'+routes.imgSrchPath, routes.returnBySearch);
-app.get('/'+routes.latestPath, routes.returnLatest);
+app.get('/'+routes.latestPath, routes.returnLatestQs);
 
 app.listen(app.get('port'), ()=>{
   console.log(`The server is listening to port ${app.get('port')}`);

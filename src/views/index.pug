@@ -15,7 +15,7 @@ body
             h1 JSON Image Search
             .mdl-cell.mdl-cell--12-col
               h3 Usage:
-              - var q=`q=${latestQ}`
+              - var q=`q=gestation%20crates`
               - var imgSrchUrl = url+imgSrchPath+'?'+q
               - var imgSrchUrlHtml = url+imgSrchPath+'?<b>'+q+'</b>'
               p To search images by a query string:
@@ -25,6 +25,6 @@ body
                 p Paginate by adding 'offset=2':
                 .example
                   a(href=imgSrchUrl+'&offset=2') #{imgSrchUrl}<b>&offset=2</b>
-                  p To get recently searched images:
-                  .example
-                    a(href=url+latestPath) #{url+latestPath}
+                p To get recent query strings:
+                .example
+                  a(href=url+latestPath) #{url+latestPath}
